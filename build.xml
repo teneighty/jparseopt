@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="jparseopts" default="build">
+    <property name="src.dir"      value="src"/>
+    <property name="src.examples" value="examples"/>
+    <property name="build.jar"    value="jparseopt.jar"/>
+    <property name="build.dir"    value="classes"/>
+    <property name="build.docs"   value="docs"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+        <delete file="${build.jar}"/>
+        <delete dir="${build.docs}" />
+        <delete>
+            <fileset dir="${src.examples}" includes="**/*.class"/>
+        </delete>
+
+    </target>
+
+    <target name="build">
+        <mkdir dir="${build.dir}"/>
+        <javac debug="on" srcdir="${src.dir}" destdir="${build.dir}" />
+
+        <jar destfile="${build.jar}">
+            <fileset dir="${build.dir}" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="com.jparseopt.completion.Completion"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <path id="jparseopt.classpath">
+        <fileset dir=".">
+            <include name="jparseopt.jar"/>
+        </fileset>
+    </path>
+
+    <target name="examples" depends="build">
+        <javac classpathref="jparseopt.classpath"
+               srcdir="${src.examples}" 
+               destdir="${src.examples}" />
+    </target>
+
+    <target name="docs">
+        <javadoc packagenames="com.*"
+                 sourcepath="${src.dir}"
+                 destdir="${build.docs}"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="jparseopts">
+        </javadoc>
+    </target>
+</project>
+
