@@ -116,6 +116,6 @@ public class Completion {
         clazz = new StringOption("class",    "Class",           OptType.REQUIRED, "-c", "--class");
         attr  = new StringOption("opts",     "Attribute",       OptType.REQUIRED, "-a", "--attribute");
 
-        opts.addOptions(help, version, bash, zsh, path, exe, clazz, attr);
+        opts.addOptions(help, version, bash, path, exe, clazz, attr);
     }
 }
