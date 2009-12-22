@@ -43,6 +43,6 @@ Create a shell completion script for `./examples/intsexample`:
 
 TODO
 ----------------------------------
-* Add Heirachical Options
+* Heirachical Options Example
 * Improve Bash completion
 * Add Zsh completion
