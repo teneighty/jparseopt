@@ -43,6 +43,8 @@ Create a shell completion script for `./examples/intsexample`:
 
 TODO
 ----------------------------------
-* Hierarchical Options Example
+* Implement RadioOption
+* Allow ability to grab remaining args
 * Improve Bash completion
 * Add Zsh completion
+
