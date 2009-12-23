@@ -13,7 +13,7 @@ the java code. It uses Java's reflection API to load the OptionParser object
 and then writes to stdout the shell completion of choice.
 
 You do not need to use jparseopt-completion to create shell completion
-scripts. Look at examples/ShellCompletion.java.
+scripts. Take a gander at `examples/ShellCompletion.java`.
 
     cd script
     ./jparseopt-completion --help
