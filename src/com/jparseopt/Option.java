@@ -10,14 +10,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public abstract class Option {
-    public Option(String name, String desc, String... args) {
-        this(name, desc, OptType.OPTIONAL, args);
+    public Option(String name, String desc, String... opts) {
+        this(name, desc, OptType.OPTIONAL, opts);
     }
 
-    public Option(String name, String desc, OptType type, String... args) {
+    public Option(String name, String desc, OptType type, String... opts) {
         this.name = name;
         this.desc = desc;
-        this.args = args;
+        this.opts = opts;
         this.type = type;
 
         this.optsArgs  = new HashMap<String, Option>();
@@ -49,12 +49,12 @@ public abstract class Option {
         }
     }
 
-    public void setArgs(String[] a) {
-        this.args = a;
+    public void setOpts(String[] a) {
+        this.opts = a;
     }
 
-    public String[] getArgs() {
-        return args;
+    public String[] getOpts() {
+        return opts;
     }
 
     public void setType(OptType t) {
@@ -96,7 +96,7 @@ public abstract class Option {
         optsNames.put(o.getName(), o);
 
         int i = 0;
-        for (String s : o.getArgs()) {
+        for (String s : o.getOpts()) {
             updateMaxLength(i, s);
             optsArgs.put(s, o);
             i++;
@@ -133,7 +133,7 @@ public abstract class Option {
             if (o.getHidden())
                 continue;
             for (int i = 0; i < argMaxLen.size(); ++i) {
-                String s = (i < o.getArgs().length) ? o.getArgs()[i] : "";
+                String s = (i < o.getOpts().length) ? o.getOpts()[i] : "";
                 int width = argMaxLen.get(i).intValue() + 1;
                 String f = String.format(" %-" + width + "s", s);
                 usage.append(f).append(" ");
@@ -161,7 +161,7 @@ public abstract class Option {
 
     protected String name;
     protected String desc;
-    protected String[] args;
+    protected String[] opts;
     protected String value;
     protected OptType type;
     protected boolean requiresValue;

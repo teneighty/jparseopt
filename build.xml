@@ -18,7 +18,7 @@
 
     <target name="build">
         <mkdir dir="${build.dir}"/>
-        <javac debug="on" srcdir="${src.dir}" destdir="${build.dir}" />
+        <javac includeantruntime="false" debug="on" srcdir="${src.dir}" destdir="${build.dir}" />
 
         <jar destfile="${build.jar}">
             <fileset dir="${build.dir}" includes="**/*.class"/>

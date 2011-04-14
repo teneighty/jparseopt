@@ -10,7 +10,9 @@ public class OptionParser
 
     public OptionParser() { 
         super("", ""); 
+
         setHidden(true);
+        args = new ArrayList<String>();
     }
 
     /**
@@ -47,7 +49,15 @@ public class OptionParser
                 if (o.getOptMap().size() > 0)
                     source = o;
             }
+            else {
+                this.args.add(a);
+            }
         }
+    }
+
+    public List<String> getArgs()
+    {
+        return this.args;
     }
 
     /**
@@ -62,5 +72,7 @@ public class OptionParser
         }
         return missing;
     }
+
+    protected List<String> args;
 }
 
